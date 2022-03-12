@@ -1,6 +1,7 @@
 package com.skilldistillery.cards.common;
 
 public class Dealer extends Player{
+	private String name;
 	private Deck deck = new Deck();
 	
 	public Dealer(String name) {
