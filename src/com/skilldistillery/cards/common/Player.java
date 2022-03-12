@@ -5,24 +5,28 @@ import java.util.List;
 
 public class Player {
 
-	private String name;
+	private final String name;
 	private int numOfCards;
-	public List <Card> playerHand;
+	private List <Card> playerHand;
 	
 	public Player(String name) {
 		this.name = name;
 		playerHand = new ArrayList<Card>();
 	}
 
+	//TODO Add card method
+	public void addCard(Card card) {
+		playerHand.add(card);
+	}
 	
+	
+	//TODO 
 	// Start G&S ****************************************
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 
 	public int getNumOfCards() {
 		return numOfCards;
