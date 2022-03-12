@@ -20,9 +20,19 @@ public class Player {
 			this.playerHand = null;
 		}
 	}
-	//TODO Add card method
-	public void addCard(Card card) {
-		playerHand.add(card);
+	
+	
+	//TODO Add card method, need boolean?
+	public boolean addCard(Card card) {
+		int playerScore = 0;
+		Deck deck = new Deck();
+		for(int i = 0; i < playerHand.size(); i++) {
+			Card cardDealt = deck.dealCard();
+			playerScore = playerScore + cardDealt.getValue();
+			playerHand.add(cardDealt);
+			
+		}
+			return (playerScore <= 21);
 	}
 	
 	
