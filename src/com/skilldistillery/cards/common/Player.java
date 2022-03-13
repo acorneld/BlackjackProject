@@ -3,7 +3,7 @@ package com.skilldistillery.cards.common;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public abstract class Player {
 
 	private String name;
 	private int numOfCards = 0;
@@ -41,6 +41,8 @@ public class Player {
 	}
 	
 	//TODO 
+	
+	
 	// Start G&S ****************************************
 	public String getName() {
 		return name;
