@@ -12,6 +12,7 @@ public class Player {
 	public Player(String name) {
 		this.name = name;
 		playerHand = new ArrayList<Card>();
+		this.handEmpty();
 	}
 	// needed a "hand" to put card in
 	
@@ -35,6 +36,9 @@ public class Player {
 			return (playerScore <= 21);
 	}
 	
+	public void showHand() {
+		
+	}
 	
 	//TODO 
 	// Start G&S ****************************************
@@ -61,5 +65,10 @@ public class Player {
 	}
 	//End G&S ****************************************
 
+	@Override
+	public String toString() {
+		return "Player [playerHand=" + playerHand + "]";
+	}
+	
 
 }
