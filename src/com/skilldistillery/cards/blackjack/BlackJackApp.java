@@ -8,10 +8,18 @@ import com.skilldistillery.cards.common.Player;
 
 public class BlackJackApp {
 	
-	private Player player = new Player("Andrew");
-	private Dealer dealer = new Dealer("George");
-	private Deck deck = new Deck();
-	Scanner kb = new Scanner(System.in);
+	public static void main(String[] args) {
+		
+	}
+
+	private void play() {
+		Scanner kb = new Scanner(System.in);
+		System.out.println("This is a game of BlackJack, you have the choice to HIT or STAY until you beat the dealer!");
+		Player player = new Player(null, null);
+		Dealer dealer = new Dealer(null, null);
+	
+	}
+}
+
 	
 
-}

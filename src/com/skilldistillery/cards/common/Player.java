@@ -3,74 +3,53 @@ package com.skilldistillery.cards.common;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Player {
-
+public class Player {
+	// Variables
 	private String name;
-	private int numOfCards = 0;
-	private List <Card> playerHand;
-	
-	public Player(String name) {
+	private int playerHandValue = 0;
+	protected List<Card> playerHand;
+
+	// Constructors
+	public Player() {
+
+	}
+
+	public Player(String name, List<Card> playerHand) {
 		this.name = name;
-		playerHand = new ArrayList<Card>();
-		this.handEmpty();
+		this.playerHand = playerHand;
 	}
-	// needed a "hand" to put card in
 	
-	public void handEmpty() {
-		for(int i = 0; i < playerHand.size(); i++) {
-			this.playerHand = null;
-		}
+	public void addCard(Card card) {
+		playerHand.add(card);
 	}
 	
 	
-	//TODO Add card method, need boolean?
-	public boolean addCard(Card card) {
-		int playerScore = 0;
-		Deck deck = new Deck();
-		for(int i = 0; i < playerHand.size(); i++) {
-			Card cardDealt = deck.dealCard();
-			playerScore = playerScore + cardDealt.getValue();
-			playerHand.add(cardDealt);
-			
-		}
-			return (playerScore <= 21);
-	}
-	
-	public void showHand() {
-		
-	}
-	
-	//TODO 
 	
 	
+
 	// Start G&S ****************************************
 	public String getName() {
 		return name;
 	}
 
-	
-
-	public int getNumOfCards() {
-		return numOfCards;
+	public int getPlayerHandValue() {
+		return playerHandValue;
 	}
 
-	public void setNumOfCards(int numOfCards) {
-		this.numOfCards = numOfCards;
+	public void setPlayerHandValue(int playerHandValue) {
+		this.playerHandValue = playerHandValue;
 	}
 
 	public List<Card> getPlayerHand() {
 		return playerHand;
 	}
 
-	public void setPlayerHand(List<Card> playerHand) {
-		this.playerHand = playerHand;
-	}
-	//End G&S ****************************************
+	
+	// End G&S ****************************************
 
 	@Override
 	public String toString() {
 		return "Player [playerHand=" + playerHand + "]";
 	}
-	
 
 }

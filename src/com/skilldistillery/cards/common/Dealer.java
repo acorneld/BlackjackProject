@@ -4,14 +4,16 @@ import java.util.List;
 
 public class Dealer extends Player{
 	
-	private Deck deck = new Deck();
-	private Card dealerHand;
+	private PlayerHand dealerHand;
+	private Deck myCards;
 	
 	
 	
-	public Dealer(String name) {
-		super(name);
-		deck.shuffle();
+	
+	public Dealer(String name, List<Card> playerHand) {
+		super();
+		Deck myCards = new Deck();
+		
 	}
 
 	public void showHand() {
