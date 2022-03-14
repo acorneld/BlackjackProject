@@ -1,20 +1,25 @@
-package com.skilldistillery.cards.common;
+package com.skilldistillery.cards.blackjack;
 
 import java.util.List;
 
+import com.skilldistillery.cards.common.Card;
+import com.skilldistillery.cards.common.Deck;
+import com.skilldistillery.cards.common.Player;
+
 public class Dealer extends Player{
 	
-	private PlayerHand dealerHand;
+	
 	private Deck myCards;
 	
 	
 	
 	
-	public Dealer(String name, List<Card> playerHand) {
-		super();
-		Deck myCards = new Deck();
-		
+	public Dealer() {
+		super.setName("Barabous");
 	}
+		
+		
+	
 
 	public void showHand() {
 		System.out.println(getPlayerHand().toString());
@@ -24,19 +29,12 @@ public class Dealer extends Player{
 		for(Card card : hand) {
 			System.out.println(card);
 		}
-	//	String playerScore = getPlayerHand(
 	}
 	
 	public void dealToPlayer(Player player) {
-		//TODO logic to receiver card
 	}
 	
 	public void dealToDealer() {
 		
 	}
-	//TODO Dealer to receive card
-	
-	//TODO Dealer hit
-	
-	//TODO Dealer stay
-}
+	}

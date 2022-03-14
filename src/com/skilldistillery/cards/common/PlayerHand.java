@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class PlayerHand {
-	private int currentValue;
+	
 	protected List<Card> myCards;
 
 	public PlayerHand() {
@@ -16,38 +16,22 @@ public abstract class PlayerHand {
 		this.myCards = myCards;
 	}
 
+	public void muckHand() {
+		myCards.clear();
+	}
+	
 	public void addCard(Card card) {
 		myCards.add(card);
 	}
 
-	public boolean instantWin() {
-		if (getPlayerHandValue() == 21) {
-			return true;
-		}
-		return false;
-	}
-
-	public boolean bust() {
-		if (getPlayerHandValue() > 21) {
-			return true;
-		}
-		return false;
-	}
+	
 
 	
 	// G & S *********************************
 	public List<Card> getMyCards() {
 		return myCards;
 	}
-
-	public int getPlayerHandValue() {
-		currentValue = 0;
-		for(Card card : myCards) {
-			currentValue = currentValue + card.getValue();
-		}
-		return currentValue;
-	}
-	
+	// G & S *********************************
 	@Override
 	public String toString() {
 		return "PlayerHand [myCards=" + myCards + "]";
