@@ -19,44 +19,51 @@ public class BlackJackApp {
 		Hand playerHand = new Hand("Player");
 		playerHand.addCard(deck.dealCard());
 		playerHand.addCard(deck.dealCard());
-		while(playerHand.CardsValue() <= 21) {
-		System.out.println("Would you like to Hit or Stay?");
-		System.out.println(playerHand);
-		System.out.println(playerHand.CardsValue());
-		String hitOrStay = kb.nextLine();
-		if(hitOrStay.equalsIgnoreCase("Hit")){
-			playerHand.addCard(deck.dealCard());
-			System.out.println(playerHand);
-			System.out.println(playerHand.CardsValue());
-		}
-		
-		else if(hitOrStay.equalsIgnoreCase("Stay")) {
-			System.out.println("Player will stay at" + playerHand.CardsValue());
-		}
-		}
+
 		Hand dealerHand = new Hand("Dealer");
 		dealerHand.addCard(deck.dealCard());
 		dealerHand.addCard(deck.dealCard());
 		System.out.println(dealerHand);
 		System.out.println(dealerHand.CardsValue());
-		// END LAUNCH METHOD
-		if (dealerHand.CardsValue() == 21) {
-			System.out.println("BLACKJACK!");
-		}
-		else if(dealerHand.CardsValue() <= 16) {
-			while(dealerHand.CardsValue() <= 16) {
-				dealerHand.addCard(deck.dealCard());
+
+		if (playerHand.CardsValue() != 21 || dealerHand.CardsValue() != 21) {
+
+			while (playerHand.CardsValue() <= 21) {
+				System.out.println("Player, would you like to Hit or Stay?");
+				System.out.println(playerHand);
+				System.out.println("Current Score: " + playerHand.CardsValue());
+
+				String hitOrStay = kb.nextLine();
+
+				if (hitOrStay.equalsIgnoreCase("Hit")) {
+					playerHand.addCard(deck.dealCard());
+					System.out.println(playerHand);
+					System.out.println("Current Score: " + playerHand.CardsValue());
+				} else if (hitOrStay.equalsIgnoreCase("Stay")) {
+					System.out.println("Player will stay at " + playerHand.CardsValue());
+					break;
+				}
 			}
-			
-		}
-		else if(dealerHand.CardsValue() >= 17) {
-			System.out.println("Dealer Stays");
+			// END LAUNCH METHOD
+			if (dealerHand.CardsValue() == 21) {
+				System.out.println(dealerHand);
+				System.out.println(dealerHand.CardsValue());
+				System.out.println("BLACKJACK!");
+			} else if (dealerHand.CardsValue() <= 16) {
+				while (dealerHand.CardsValue() <= 16) {
+					dealerHand.addCard(deck.dealCard());
+					System.out.println(dealerHand);
+					System.out.println(dealerHand.CardsValue());
+				}
+
+			} else if (dealerHand.CardsValue() >= 17) {
+				System.out.println("Dealer Stays at:" + dealerHand.CardsValue());
+			}
 		}
 	}
 
 	private static void Menu() {
 		System.out.println("This is a game of BlackJack, you have the option to Hit or Stay.");
 	}
-	
-	
+
 }

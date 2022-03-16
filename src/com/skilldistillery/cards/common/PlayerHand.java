@@ -18,10 +18,7 @@ public abstract class PlayerHand {
 		this.myCards = myCards;
 	}
 
-	public void muckHand() {
-		myCards.clear();
-	}
-
+	
 	public void addCard(Card card) {
 		myCards.add(card);
 	}
@@ -33,7 +30,7 @@ public abstract class PlayerHand {
 
 	@Override
 	public String toString() {
-		return  name + " " + CardsValue();
+		return  name + " Hand: " +  myCards;
 	}
 
 	public int CardsValue() {

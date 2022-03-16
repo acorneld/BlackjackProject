@@ -9,18 +9,4 @@ public class Hand extends PlayerHand {
 		super(name);
 	}
 
-	public boolean instantWin() {
-		if (CardsValue() == 21) {
-			return true;
-		}
-		return false;
-	}
-
-	public boolean bust() {
-		if (CardsValue() > 21) {
-			return true;
-		}
-		return false;
-	}
-
 }
