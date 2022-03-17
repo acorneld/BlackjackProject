@@ -11,6 +11,12 @@ public class BlackJackApp {
 
 	public static void main(String[] args) {
 
+		Menu();
+		launch();
+	}
+
+	// LAUNCH METHOD BELOW
+	public static void launch() {
 		int playerScore = 0;
 		int dealerScore = 0;
 		Scanner kb = new Scanner(System.in);
@@ -18,9 +24,7 @@ public class BlackJackApp {
 		Deck deck = new Deck();
 		Hand playerHand = new Hand("Player");
 		Hand dealerHand = new Hand("Dealer");
-		Menu();
 		deck.shuffle();
-		// LAUNCH METHOD BELOW
 		// Deal Player Two Cards
 		playerHand.addCard(deck.dealCard());
 		playerHand.addCard(deck.dealCard());
@@ -47,7 +51,7 @@ public class BlackJackApp {
 					System.out.println(playerHand);
 					System.out.println("Current Score: " + playerHand.CardsValue());
 				} else if (hitOrStay.equalsIgnoreCase("Stay")) {
-					System.out.println("Player will stay at " + playerHand.CardsValue());
+					System.out.println("Player will stay at: " + playerHand.CardsValue());
 					playerScore = playerHand.CardsValue();
 					break;
 				}
@@ -67,7 +71,7 @@ public class BlackJackApp {
 				}
 
 			} else if (dealerHand.CardsValue() >= 17) {
-				System.out.println("Dealer Stays at:" + dealerHand.CardsValue());
+				System.out.println("Dealer Stays at: " + dealerHand.CardsValue());
 				dealerScore = dealerHand.CardsValue();
 			}
 		} else {
@@ -80,21 +84,51 @@ public class BlackJackApp {
 			playerScore = playerHand.CardsValue();
 
 		}
-		if(didDealerWin(playerScore, dealerScore) == true) {
-			System.out.println("Dealer Wins");
-		}else {
-			System.out.println("Player Wins");
+		while (playerScore <= 21 || dealerScore <= 21) {
+			if (didDealerWin(playerScore, dealerScore) == true) {
+				if (dealerScore <= 21 && playerScore <= dealerScore) {
+					System.out.println("Dealer Wins!");
+					break;
+				} else if (dealerScore >= 22) {
+					System.out.println("Dealer BUSTS!");
+					if (playerScore > dealerScore && playerScore <= 21) {
+						System.out.println("Player Wins!");
+					} else if (playerScore < dealerScore && playerScore <= 21) {
+						System.out.println("Player Wins!");
+					}
+
+					break;
+				}
+			} else if (didDealerWin(playerScore, dealerScore) == false) {
+				if (playerScore <= 21) {
+					System.out.println("Player Wins!");
+					break;
+				}
+			}else {
+				System.out.println("PUSH! Dealer Wins");
+			}
 		}
 	}
+//			} else if (dealerScore >= playerScore) {
+//				System.out.println("Dealer Wins");
+//			}
+//		} else if (playerScore >= 22) {
+//			System.out.println("Player BUSTS!");
+//		}
+//		else if (playerScore > dealerScore) {
+//			System.out.println("Player Wins");
+//		}
+//
+//	}
 	// END LAUNCH METHOD
-	
+
 	private static boolean didDealerWin(int playerScore, int dealerScore) {
-		return playerScore >= dealerScore;
-		
+		return dealerScore >= playerScore;
 	}
 
 	private static void Menu() {
-		System.out.println("This is a game of BlackJack, you have the option to Hit or Stay.");
+		System.out.println("This is a game of BlackJack, You must try to beat the Dealer by getting" +
+				" as close to 21 without going over.");
+		System.out.println("You have the option to Hit or Stay.");
 	}
-
 }

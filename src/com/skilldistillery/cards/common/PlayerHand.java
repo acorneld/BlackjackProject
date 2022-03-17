@@ -42,4 +42,12 @@ public abstract class PlayerHand {
 		return handValue;
 	}
 
+	public int getHandValue() {
+		return handValue;
+	}
+
+	public void setHandValue(int handValue) {
+		this.handValue = handValue;
+	}
+
 }
